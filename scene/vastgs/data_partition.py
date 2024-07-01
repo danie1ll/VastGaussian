@@ -267,6 +267,9 @@ class ProgressiveDataPartitioning:
             for i in range(n):  # 按照z轴将所有相机分成n部分
                 partition_dict[f"{partition_idx}_{i + 1}"] = {"camera_list": sorted_CameraPose_by_z_list[
                                                              i * num_of_camera_per_n_partition:(i + 1) * num_of_camera_per_n_partition]}
+                
+                #print(partition_dict)
+
                 if i != n-1:
                     partition_dict[f"{partition_idx}_{i + 1}"].update({"x_mid_camera": cameras["x_mid_camera"]})
                     partition_dict[f"{partition_idx}_{i + 1}"].update({"z_mid_camera": sorted_CameraPose_by_z_list[(i + 1) * num_of_camera_per_n_partition - 1]})

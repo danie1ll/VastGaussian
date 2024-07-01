@@ -102,6 +102,8 @@ def readColmapCamerasPartition(cam_extrinsics, cam_intrinsics, images_folder, ma
 
         params = np.array(intr.params)
 
+        #print(intr.model)
+
         if intr.model == "SIMPLE_PINHOLE":   # 使用SIMPLE_PINHOLE相机模型，适用于非畸变图像，它有一个焦距参数，也可以理解为fx=fy
             focal_length_x = intr.params[0]  # 相机内参
             FovY = focal2fov(focal_length_x, height)

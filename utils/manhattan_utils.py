@@ -32,6 +32,7 @@ def create_man_rans(position, rotation):
 
 
 def get_man_trans(lp):
+    #print(lp)
     lp.pos = [float(pos) for pos in lp.pos.split(" ")]
     lp.rot = [float(rot) for rot in lp.rot.split(" ")]
 

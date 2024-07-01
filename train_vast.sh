@@ -28,19 +28,33 @@
 #> log-6.25 2>&1 & echo $! > run.pid
 
 # train rubble tj
-nohup python train_vast.py -s ../datasets/Mill19/rubble \
---exp_name rubble_tj \
+# nohup python train_vast.py -s ../datasets/Mill19/rubble \
+# --exp_name rubble_tj \
+# --manhattan \
+# --plantform "tj" \
+# --eval \
+# --llffhold 83 \
+# --resolution 4 \
+# --pos "0.0 0.0 0.0" \
+# --rot "0.0 21 0.0" \
+# --m_region 3 \
+# --n_region 4 \
+# --iterations 60_000 \
+# > log-6.26 2>&1 & echo $! > run.pid
+
+# train on your own custom drone footage
+python train_vast.py -s ./datasets/room \
+--exp_name yard \
 --manhattan \
---plantform "tj" \
+--plantform "threejs" \
 --eval \
 --llffhold 83 \
 --resolution 4 \
---pos "0.0 0.0 0.0" \
---rot "0.0 21 0.0" \
+--pos "-0.004 0.400 -0.119" \
+--rot "0.80 -5.00 180.00" \
 --m_region 3 \
---n_region 4 \
+--n_region 3 \
 --iterations 60_000 \
-> log-6.26 2>&1 & echo $! > run.pid
 
 # train train
 #nohup python train_vast.py -s ../datasets/tandt/train \

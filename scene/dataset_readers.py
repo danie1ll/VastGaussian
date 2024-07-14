@@ -328,8 +328,8 @@ def readColmapSceneInfo(path, images, eval, llffhold=83):
 
 
 def readColmapSceneInfoVast(path, model_path, partition_id, images, eval, man_trans, llffhold=83):
-    # 读取每个partition的点云，以及对应的相机
-    # 读取所有图像的信息，包括相机内外参数，以及3D点云坐标
+    # Read the point cloud for each partition, as well as the corresponding cameras
+    # Read information for all images, including camera intrinsic and extrinsic parameters, and 3D point cloud coordinates
     client_camera_txt_path = os.path.join(model_path, f"{partition_id}_camera.txt")
     with open(client_camera_txt_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()

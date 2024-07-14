@@ -43,17 +43,16 @@
 # > log-6.26 2>&1 & echo $! > run.pid
 
 # train on your own custom drone footage
-python train_vast.py -s ./datasets/room \
---exp_name yard \
---manhattan \
---plantform "threejs" \
+python train_vast.py -s ./datasets/yard_new_app/undistorted \
+--exp_name yard-final \
+--plantform "tj" \
 --eval \
---llffhold 83 \
---resolution 4 \
---pos "-0.004 0.400 -0.119" \
---rot "0.80 -5.00 180.00" \
---m_region 3 \
---n_region 3 \
+--llffhold 10 \
+--resolution 2 \
+--pos "0 0 0" \
+--rot "0 0 0" \
+--m_region 1 \
+--n_region 1 \
 --iterations 60_000 \
 
 # train train

@@ -37,7 +37,7 @@ def data_partition(lp):
     for partition in partition_result:
         partition_id_list.append(partition.partition_id)
         camera_info = partition.cameras
-        image_name_list = [camera_info[i].camera.image_name + '.jpg' for i in range(len(camera_info))]
+        image_name_list = [camera_info[i].camera.image_name + '.png' for i in range(len(camera_info))]
         txt_file = f"{lp.model_path}/partition_point_cloud/visible/{partition.partition_id}_camera.txt"
         # 打开一个文件用于写入，如果文件不存在则会被创建
         with open(txt_file, 'w') as file:

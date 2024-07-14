@@ -66,6 +66,9 @@ if not args.skip_matching:
         exit(exit_code)
 
 ### Image undistortion
+
+# colmap image_undistorter --image_path /path/to/source/input --input_path /path/to/source/distorted/sparse/0 --output_path /path/to/source --output_type COLMAP
+
 ## We need to undistort our images into ideal pinhole intrinsics.
 img_undist_cmd = (colmap_command + " image_undistorter \
     --image_path " + args.source_path + "/input \
@@ -86,6 +89,19 @@ for file in files:
     source_file = os.path.join(args.source_path, "sparse", file)
     destination_file = os.path.join(args.source_path, "sparse", "0", file)
     shutil.move(source_file, destination_file)
+
+# Execute model_orientation_aligner
+
+# colmap model_orientation_aligner --input_path lisbon-300-colmap/sparse/0/ --image_path lisbon-300-colmap/images/ --output_path lisbon-300-colmap/sparse/0
+
+model_aligner_cmd = (colmap_command + " model_orientation_aligner \
+    --input_path " + args.source_path + "/sparse/0 \
+    --image_path " + args.source_path + "/images \
+    --output_path " + args.source_path + "/sparse/0")
+exit_code = os.system(model_aligner_cmd)
+if exit_code != 0:
+    logging.error(f"Model orientation alignment failed with code {exit_code}. Exiting.")
+    exit(exit_code)
 
 if(args.resize):
     print("Copying and resizing...")
